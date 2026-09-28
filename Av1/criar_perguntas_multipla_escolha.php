@@ -3,10 +3,10 @@
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
  
     $pergunta = $_POST["pergunta"]; 
-    $resposta1 = $_POST["letraA"];
-    $resposta2 = $_POST["letraB"];
-    $resposta3 = $_POST["letraC"];
-    $resposta4 = $_POST["letraD"];
+    $letraA = $_POST["letraA"];
+    $letraB = $_POST["letraB"];
+    $letraC = $_POST["letraC"];
+    $letraD = $_POST["letraD"];
     $correta = $_POST["correta"];
 
     $msg = ""; 
@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <br><br>
 
-        <input type="submit" value="Criar pergunta"> 
+        <input type="submit" value="Criar pergunta de múltipla escolha"> 
 
     </form>  
          
