@@ -1,0 +1,2 @@
+id;pergunta;resposta
+2;Batman ou Homem de ferro?;Homem aranha!!

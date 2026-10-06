@@ -1,0 +1,2 @@
+id;pergunta;letraA;letraB;letraC;letraD;correta
+2;O que vc acha da sabrina carpinteira?;Diva?;Linda?;Perfeita?;Bafonica?;D
