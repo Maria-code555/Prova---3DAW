@@ -1,7 +1,10 @@
 <?php 
 
+$msg = "";
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') { 
  
+    $id = $_POST["id"];
     $pergunta = $_POST["pergunta"]; 
     $letraA = $_POST["letraA"];
     $letraB = $_POST["letraB"];
@@ -9,24 +12,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $letraD = $_POST["letraD"];
     $correta = $_POST["correta"];
 
-    $msg = ""; 
+     
  
     if (!file_exists("perguntas.txt")) { 
  
         $arqPergunta = fopen("perguntas.txt", "w") or die("Erro ao criar!"); 
-        $linha = "pergunta;letraA;letraB;letraC;letraD;correta\n"; 
+        $linha = "id;pergunta;letraA;letraB;letraC;letraD;correta\n"; 
  
         fwrite($arqPergunta, $linha);
         fclose($arqPergunta); 
     } 
- 
+    
     $arqPergunta = fopen("perguntas.txt", "a") or die("erro ao criar"); 
-
-    $linha = $pergunta . ";" . $letraA . ";" . $letraB . ";" . $letraC . ";" . $letraD . ";" . $correta . "\n"; 
-
+    $linha = $id . ";" . $pergunta . ";" . $letraA . ";" . $letraB . ";" . $letraC . ";" . $letraD . ";" . $correta . "\n";
+    
     fwrite($arqPergunta, $linha); 
-    fclose($arqPergunta); 
-
+    fclose($arqPergunta);
+    
     $msg = "Pergunta criada com sucesso!!!"; 
 } 
  
@@ -34,23 +36,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
  
 <!DOCTYPE html> 
 <html lang="pt-br"> 
- 
 <head> 
     <meta charset="UTF-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
- 
     <title>Crie suas perguntas</title>
 </head> 
- 
 <body> 
-
     <h1>Crie suas perguntas</h1> 
 
     <p class="subtitulo"> 
         Crie a sua pergunta de múltipla escolha
     </p> 
  
-    <form action="" method="POST"> 
+    <form action="criar_perguntas_multipla_escolha.php" method="POST">
+        
+        <p>ID:</p>
+        <input type="number" name="id" required>
  
         <p>Pergunta:</p>
         <input type="text" name="pergunta" required>
@@ -80,11 +81,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         <input type="submit" value="Criar pergunta de múltipla escolha"> 
 
-    </form>  
-         
+    </form>
+
     <?php echo $msg; ?>
          
-    <br> 
- 
+    <br>
+
+    <a href="perguntas_texto.php">Criar pergunta de texto</a>
+    
+    <br><br>
+    
+    <a href="alterar_multipla.php">Altere sua pergunta de multipla escolha</a>
+
+    <br><br>
+
+    <a href="listar_perguntas.php">Veja suas perguntas</a>
+
+    <br><br>
+
+    <a href="listar_uma_pergunta.php">Veja uma pergunta especifica</a>
+
 </body> 
 </html>
